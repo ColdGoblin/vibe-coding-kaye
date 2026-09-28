@@ -627,7 +627,7 @@ html.embed .page-hero { padding: 36px 0 32px; }
       <div class="track-pick" id="track-pick" role="group" aria-label="בחירת מסלול"></div>
 
       <h2 class="bar-title" style="font-size:1.4rem;margin-top:36px">2. עברו שלב אחר שלב</h2>
-      <p class="muted" style="margin-bottom:0">העתיקו את הפרומפט לשיחה ב-<a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>, ענו על השאלות אחת-אחת, וכשהשלב הושלם — עברו לבא <strong>באותה שיחה</strong>.</p>
+      <p class="muted" style="margin-bottom:0">העתיקו את הפרומפט לשיחה ב-<a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>, ענו על השאלות אחת אחרי השנייה, ובסוף השלב עברו לשלב הבא <strong>באותה שיחה</strong>.</p>
       <nav aria-label="שלבי האפיון"><ol class="stepper" id="stepper"></ol></nav>
       <div class="progress" aria-hidden="true"><span id="progress-bar" style="width:0"></span></div>
       <p class="small muted" id="progress-text" aria-live="polite" style="margin-top:6px"></p>
@@ -1216,7 +1216,7 @@ window.PROMPT_BOOK = {
 
     if (s.checklist) {
       var gc = gemChecks[state.track] || [];
-      main += '<div class="card" style="margin-top:18px"><h3>מה מחפשים? (צ\'קליסט למבחן העיוור)</h3>' +
+      main += '<div class="card" style="margin-top:18px"><h3>מה בודקים במבחן העיוור?</h3>' +
         '<ul class="dots">' + s.notes.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" +
         '<ul class="checklist" id="gem-checklist">' + s.checklist.map(function (c, i) {
           return '<li><label><input type="checkbox" data-gi="' + i + '"' + (gc.indexOf(i) > -1 ? " checked" : "") + "><span>" + esc(c) + "</span></label></li>";
@@ -1232,10 +1232,10 @@ window.PROMPT_BOOK = {
     var aside =
       '<aside class="step-aside" aria-label="סיכום השלב">' +
       '<div class="card teal"><h3 style="font-size:1rem">🎯 בסוף השלב</h3><p>' + esc(s.end) + "</p></div>" +
-      '<div class="card"><label class="check-row"><input type="checkbox" id="mark-done"' + (isDone ? " checked" : "") + "> סיימתי את השלב הזה</label>" +
-      '<p class="small muted" style="margin:8px 0 0">נשמר רק בדפדפן שלכם.</p></div>' +
-      (s.n <= 5 ? '<div class="card pink"><h3 style="font-size:1rem">🐢 Gemini ממהר?</h3><p class="small">אם הוא שואל כמה שאלות בבת אחת או קופץ לפתרון — שלחו את פרומפט ההאטה.</p><button type="button" class="btn btn-sm btn-primary" data-open-slow>לפרומפט ההאטה</button></div>' : "") +
-      (s.n === 5 ? '<div class="card dark"><h3 style="font-size:1rem">🎉 יש לכם אפיון!</h3><p class="small">שמרו את מסמך האפיון ואת הבריף — תצטרכו אותם לבנייה.</p></div>' : "") +
+      '<div class="card"><label class="check-row"><input type="checkbox" id="mark-done"' + (isDone ? " checked" : "") + "> סיימתי את השלב</label>" +
+      '<p class="small muted" style="margin:8px 0 0">הסימון נשמר רק בדפדפן שלכם.</p></div>' +
+      (s.n <= 5 ? '<div class="card pink"><h3 style="font-size:1rem">🐢 Gemini ממהר?</h3><p class="small">אם הוא שואל כמה שאלות בבת אחת או קופץ ישר לפתרון, שלחו לו את פרומפט ההאטה.</p><button type="button" class="btn btn-sm btn-primary" data-open-slow>לפרומפט ההאטה</button></div>' : "") +
+      (s.n === 5 ? '<div class="card dark"><h3 style="font-size:1rem">🎉 יש לכם אפיון!</h3><p class="small">שמרו את מסמך האפיון ואת הבריף. תצטרכו אותם בשלב הבנייה.</p></div>' : "") +
       "</aside>";
 
     var panel = document.getElementById("step-panel");
