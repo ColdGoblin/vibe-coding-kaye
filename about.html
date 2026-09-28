@@ -123,7 +123,7 @@ strong { font-weight: 700; }
 }
 .nav-toggle svg { width: 22px; height: 22px; }
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .nav-toggle { display: inline-flex; }
   .main-nav {
     position: fixed; inset: 72px 0 auto 0; background: #fff; border-bottom: 1px solid var(--line);
@@ -605,6 +605,99 @@ html.embed body { background: var(--paper); }
 
 html.embed .page-hero { padding: 36px 0 32px; }
 
+/* =========================================================
+   שיפורי חוויית שימוש — טלפון, ניווט והתקדמות
+   ========================================================= */
+
+/* שם השלב הנוכחי מתחת לפס השלבים */
+.step-label { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 10px 0 8px; font-family: var(--font-head); font-weight: 800; color: var(--teal-900); }
+.step-label .of { color: var(--muted); font-weight: 600; font-size: .9rem; }
+
+/* סטטוס התקדמות על כרטיסי המסלול בדף הבית */
+.path-status {
+  display: inline-block; margin-bottom: 8px; padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 800;
+  font-family: var(--font-head); background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100);
+}
+.path-status.done { background: #e6f4ec; color: var(--success); border-color: #bfe3cd; }
+.path-status[hidden] { display: none; }
+
+/* כרטיס גלריה בלי תמונה */
+.project .thumb { background: linear-gradient(135deg, var(--teal-900), var(--teal-700)); }
+.project .thumb.t-studio { background: linear-gradient(135deg, var(--crimson-700), var(--crimson)); }
+.project .thumb.t-canvas { background: linear-gradient(135deg, var(--teal-800), var(--teal-600)); }
+.project .thumb .ph-art { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-size: 1rem; }
+.project .thumb .ph-icon { font-size: 2.6rem; line-height: 1; }
+.project .thumb .ph-tool { font-size: .85rem; font-weight: 800; letter-spacing: .04em; background: rgba(255,255,255,.14); padding: 3px 12px; border-radius: 999px; }
+
+/* חזרה למעלה */
+.back-top {
+  position: fixed; inset-inline-end: 18px; bottom: 80px; z-index: 44; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line); background: #fff; color: var(--teal-900); box-shadow: var(--shadow);
+  display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .2s, bottom .2s;
+}
+.back-top.show { opacity: 1; pointer-events: auto; }
+.back-top:hover { color: var(--crimson); }
+
+/* כפתור העתקה צמוד בתחתית המסך (טלפון) */
+.copybar {
+  position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 46;
+  display: none; align-items: center; gap: 10px; background: var(--teal-900); color: #fff;
+  border-radius: 16px; padding: 8px 8px 8px 14px; padding-inline-start: 14px; box-shadow: var(--shadow-lg);
+}
+.copybar.show { display: flex; }
+.copybar span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; font-size: .92rem; }
+.copybar .copy-btn { background: var(--crimson); padding: 9px 16px; }
+body.copybar-on .a11y-btn, body.copybar-on .fab { bottom: 80px; }
+body.copybar-on .back-top { bottom: 136px; }
+body.copybar-on .a11y-panel { bottom: 136px; }
+body.copybar-on .toast { bottom: 84px; }
+
+/* תפריט קטגוריות — הדגשת הקטגוריה הנוכחית */
+.side-nav a.active { background: var(--teal-900); color: #fff; }
+
+@media (max-width: 900px) {
+  /* תפריט הקטגוריות נצמד לראש המסך ונגלל לרוחב */
+  .side-nav {
+    position: sticky; top: 72px; z-index: 30; margin-inline: calc(-1 * var(--gutter)); border-radius: 0; border-inline: 0; border-top: 0;
+    padding: 8px var(--gutter); background: rgba(250, 248, 244, .96); backdrop-filter: blur(8px);
+  }
+  .side-nav h2, .side-nav > p { display: none; }
+  .side-nav ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .side-nav ul::-webkit-scrollbar { display: none; }
+  .side-nav li { flex-shrink: 0; }
+  html { scroll-padding-top: 136px; }
+}
+
+@media (max-width: 720px) {
+  /* כפתורים צפים קטנים, ומרווח בתחתית כדי שלא יסתירו תוכן */
+  main { padding-bottom: 76px; }
+  .a11y-btn { width: 46px; height: 46px; bottom: 14px; inset-inline-end: 14px; }
+  .a11y-btn svg { width: 22px; height: 22px; }
+  .a11y-panel { bottom: 70px; inset-inline-end: 14px; }
+  .back-top { bottom: 70px; inset-inline-end: 14px; }
+  .fab { width: 46px; height: 46px; padding: 0; justify-content: center; bottom: 14px; inset-inline-start: 14px; font-size: 1.3rem; }
+  .fab .fab-text { display: none; }
+
+  /* כותרות עמוד קומפקטיות */
+  .page-hero { padding: 28px 0 26px; }
+  .page-hero h1 { font-size: 1.9rem; }
+  .page-hero p.lead { font-size: 1rem; }
+
+  /* ספר הפרומפטים: בחירת מסלול בשני כפתורים צרים */
+  .track-pick { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .track-btn { padding: 12px; gap: 6px; flex-direction: column; align-items: flex-start; border-radius: var(--radius); }
+  .track-btn .ti { font-size: 1.4rem; }
+  .track-btn b { font-size: 1rem; }
+  .track-btn span.q { display: none; }
+  .stepper { margin: 18px 0 0; }
+}
+
+/* מונע מתפריט הקטגוריות להרחיב את העמוד לרוחב */
+@media (max-width: 900px) {
+  .layout-side { grid-template-columns: minmax(0, 1fr); }
+  .layout-side > * { min-width: 0; }
+}
+
 </style>
 </head>
 <body>
@@ -625,6 +718,7 @@ html.embed .page-hero { padding: 36px 0 32px; }
         <h2 class="bar-title">על האתר</h2>
         <p>האתר מרכז את חומרי הקורס — ספר הפרומפטים לאפיון, פרומפטים לבנייה ב-Gemini Canvas וב-Google AI Studio, מדריכים, צ'קליסטים ועיקרי המפגשים — ומציג את התוצרים שבנו משתתפי הקורס.</p>
         <p>הרעיון המרכזי של הקורס: <strong>קודם חושבים, אחר כך בונים.</strong> לא ממהרים לבנות — משתמשים בשיחה עם הבינה כדי לחשוב, לברר ולקבל החלטות לפני הבנייה.</p>
+        <p id="contact">שאלות, הערות או הצעות לשיפור? כתבו לנו: <span data-contact>לצוות הקורס</span></p>
       </article>
 
       <article class="cat-block" id="credits">
@@ -646,7 +740,8 @@ html.embed .page-hero { padding: 36px 0 32px; }
           <li>תפריט הנגישות (הכפתור בפינת המסך) מאפשר הגדלת טקסט, ניגודיות גבוהה, הדגשת קישורים וגופן קריא.</li>
           <li>האתר מותאם לטלפונים ולמסכים קטנים, ומכבד את הגדרת "הפחתת תנועה" של מערכת ההפעלה.</li>
         </ul>
-                <p>נתקלתם בבעיית נגישות? נשמח לשמוע ולתקן — פנו לצוות הקורס<span id="contact-mail"></span>.</p>
+        <p>נתקלתם בבעיית נגישות? נשמח לשמוע ולתקן. פנו אלינו בדוא"ל: <span data-contact>לצוות הקורס</span></p>
+        <p class="small muted">ההצהרה עודכנה בספטמבר 2026.</p>
       </article>
 
       <article class="cat-block" id="privacy">
@@ -704,7 +799,7 @@ window.SITE_CONFIG = {
     studioGuide: "https://gemini.google.com/share/9ae51eee2f07?skid=484f60e7-f9ce-46c3-b71e-88a9934f1ecd"
   },
 
-  contactEmail: ""
+  contactEmail: "Idanshavit@kaye.ac.il"
 };
 
 </script>
@@ -800,6 +895,7 @@ window.SITE_CONFIG = {
       '<li><a href="about.html">אודות, נגישות ופרטיות</a></li>' +
       "</ul></div></div>" +
       '<div class="bottom"><span>© ' + new Date().getFullYear() + " המכללה האקדמית לחינוך קיי · חומרי הקורס לשימוש לימודי</span>" +
+      (CFG.contactEmail ? '<span>יצירת קשר: <a href="mailto:' + CFG.contactEmail + '">' + CFG.contactEmail + "</a></span>" : "") +
       '<a href="about.html#accessibility">הצהרת נגישות</a></div></div>';
   }
 
@@ -837,6 +933,7 @@ window.SITE_CONFIG = {
     var src = document.getElementById(b.getAttribute("data-copy"));
     if (!src) return;
     var text = src.getAttribute("data-raw") || src.innerText;
+    if (/^t-/.test(src.id)) store.set("vk-built", true);
     copyText(text).then(function () {
       var old = b.innerHTML;
       b.classList.add("done");
@@ -989,7 +1086,135 @@ window.SITE_CONFIG = {
     }, true);
   }
 
+  /* ---------- כפתור העתקה צמוד (בטלפון, כשכותרת הפרומפט גללה החוצה) ---------- */
+  function initCopyBar() {
+    var bar = document.createElement("div");
+    bar.className = "copybar";
+    bar.innerHTML = "<span></span>" + '<button type="button" class="copy-btn">' + ICONS.copy + "העתקה</button>";
+    document.body.appendChild(bar);
+    var label = bar.querySelector("span"), current = null;
+    bar.querySelector("button").addEventListener("click", function () {
+      if (current) current.querySelector(".copy-btn").click();
+    });
+    function check() {
+      var found = null;
+      if (window.innerWidth <= 720) {
+        var prompts = document.querySelectorAll("main .prompt");
+        for (var i = 0; i < prompts.length; i++) {
+          var r = prompts[i].getBoundingClientRect();
+          if (r.top < 60 && r.bottom > window.innerHeight * 0.45) { found = prompts[i]; break; }
+        }
+      }
+      current = found;
+      bar.classList.toggle("show", !!found);
+      document.body.classList.toggle("copybar-on", !!found);
+      if (found) label.textContent = found.querySelector(".prompt-head h3, .prompt-head h4").textContent;
+    }
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      setTimeout(function () { ticking = false; check(); }, 60);
+    }, { passive: true });
+    window.addEventListener("resize", check);
+  }
+
+  /* ---------- חזרה למעלה ---------- */
+  function initBackTop() {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "back-top";
+    b.setAttribute("aria-label", "חזרה לראש העמוד");
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(b);
+    b.addEventListener("click", function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      var m = document.getElementById("main");
+      if (m) { m.setAttribute("tabindex", "-1"); m.focus({ preventScroll: true }); }
+    });
+    window.addEventListener("scroll", function () {
+      b.classList.toggle("show", window.scrollY > 700);
+    }, { passive: true });
+  }
+
+  /* ---------- הדגשת הקטגוריה הנוכחית בתפריט הצד ---------- */
+  function initScrollSpy() {
+    var nav = document.querySelector(".side-nav");
+    if (!nav) return;
+    var ticking = false;
+    function update() {
+      var links = nav.querySelectorAll('a[href^="#"]'), active = null;
+      for (var i = 0; i < links.length; i++) {
+        var t = document.getElementById(links[i].getAttribute("href").slice(1));
+        if (t && t.getBoundingClientRect().top < 170) active = links[i];
+      }
+      if (!active && links.length) active = links[0];
+      for (var j = 0; j < links.length; j++) {
+        var on = links[j] === active;
+        links[j].classList.toggle("active", on);
+        if (on) links[j].setAttribute("aria-current", "true"); else links[j].removeAttribute("aria-current");
+      }
+      var ul = nav.querySelector("ul");
+      if (active && ul && ul.scrollWidth > ul.clientWidth) {
+        var lr = active.getBoundingClientRect(), ur = ul.getBoundingClientRect();
+        if (lr.left < ur.left || lr.right > ur.right) ul.scrollLeft += (lr.left + lr.width / 2) - (ur.left + ur.width / 2);
+      }
+    }
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      setTimeout(function () { ticking = false; update(); }, 60);
+    }, { passive: true });
+    setTimeout(update, 300);
+  }
+
+  /* ---------- "איפה אני בקורס" — סימון התקדמות במסלול בדף הבית ---------- */
+  function initProgress() {
+    var stages = document.querySelectorAll("[data-stage]");
+    if (!stages.length) return;
+    var pb = store.get("vk-pb-done", {}), best = 0;
+    Object.keys(pb).forEach(function (k) { best = Math.max(best, (pb[k] || []).length); });
+    var cl = store.get("vk-checklists", {}), checked = 0, total = 0;
+    Object.keys(cl).forEach(function (k) { (cl[k] || []).forEach(function (v) { total++; if (v) checked++; }); });
+    var status = {
+      think: best >= 5 ? ["done", "✓ האפיון הושלם"] : best > 0 ? ["progress", "בתהליך · " + best + " מתוך 7 שלבים"] : null,
+      build: store.get("vk-built", false) ? ["progress", "התחלתם לבנות"] : null,
+      test: total && checked === total ? ["done", "✓ כל הבדיקות סומנו"] : checked > 0 ? ["progress", "בתהליך · " + checked + " מתוך " + total + " בדיקות"] : null,
+      share: store.get("vk-submitted", false) ? ["done", "✓ הגשתם תוצר"] : null
+    };
+    var any = false;
+    stages.forEach(function (el) {
+      var s = status[el.getAttribute("data-stage")], badge = el.querySelector(".path-status");
+      if (!badge) return;
+      if (s) { any = true; badge.className = "path-status " + s[0]; badge.textContent = s[1]; badge.hidden = false; }
+      else badge.hidden = true;
+    });
+    var note = document.getElementById("progress-note");
+    if (note) note.hidden = !any;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[href]");
+    if (a && CFG.FORM_URL && a.href.indexOf(CFG.FORM_URL.split("/viewform")[0]) === 0) store.set("vk-submitted", true);
+  });
+
+  /* ---------- פרטי קשר ---------- */
+  function fillContact() {
+    if (!CFG.contactEmail) return;
+    document.querySelectorAll("[data-contact]").forEach(function (el) {
+      el.innerHTML = '<a href="mailto:' + esc(CFG.contactEmail) + '">' + esc(CFG.contactEmail) + "</a>";
+      el.hidden = false;
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    if (!EMBED) {
+      initCopyBar();
+      initBackTop();
+      initScrollSpy();
+      initProgress();
+    }
+    fillContact();
     if (EMBED) {
       initEmbed();
     } else {
@@ -1002,10 +1227,6 @@ window.SITE_CONFIG = {
   });
 })();
 
-</script>
-<script>
-  var m = (window.SITE_CONFIG || {}).contactEmail;
-  if (m) document.getElementById("contact-mail").innerHTML = ' בכתובת <a href="mailto:' + m + '">' + m + "</a>";
 </script>
 </body>
 </html>
