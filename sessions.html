@@ -709,7 +709,7 @@ body.copybar-on .toast { bottom: 84px; }
     <div class="wrap">
       <span class="eyebrow">מפגשי הקורס</span>
       <h1>מפגשי הקורס</h1>
-      <p class="lead">עיקרי הדברים של כל מפגש, והכלים שצריך כדי להמשיך מאיפה שעצרתם. המצגות וההקלטות נמצאות במודל.</p>
+      <p class="lead">עיקרי הדברים של כל מפגש, והכלים שצריך כדי להמשיך מאיפה שעצרתם. המצגות וההקלטות של מפגשים 1 ו-2 נמצאות במודל. מפגשים 1 ו-2: מתחילים ומתנסים. מפגש 3: מעמיקים ובונים. <a href="practice.html">למסלול תרגול למפגשים 1 ו-2</a>.</p>
     </div>
   </section>
 
@@ -831,6 +831,29 @@ body.copybar-on .toast { bottom: 84px; }
         </div>
       </article>
 
+      <article class="session" id="session-3" aria-labelledby="s3-title">
+        <div>
+          <p class="session-num">מפגש 3 · מעמיקים ובונים</p>
+          <h2 id="s3-title">סוכן על המחשב: Codex ו-Claude Code</h2>
+          <p style="font-size:1.1rem">אותה דרך עבודה, עם כלי שעובד על הקבצים שלכם. זו ההתחלה, ויהיה המשך.</p>
+          <ul class="ticks">
+            <li><strong>סוכן מול כלי מוגדר</strong> — הסוכן בונה לפי ההוראות שלכם, ולכן ההוראות קובעות את התוצאה.</li>
+            <li><strong>תיקייה, פרויקט ואפיון בשאלות</strong> — החומרים קודם, ואחר כך תהליך.</li>
+            <li><strong>סקילים והנד-אוף</strong> — לא מסבירים מחדש כל פעם, ולא נתקעים בשיחה ארוכה.</li>
+            <li><strong>קונקטורים ומידע רגיש</strong> — מחברים בזהירות, ולא מכניסים פרטים אישיים.</li>
+          </ul>
+          <p style="margin-top:14px"><a class="btn btn-primary" href="agent-workshop.html">למפגש המלא עם התרגולים</a></p>
+        </div>
+        <div>
+          <ul class="resource-list" style="margin-top:0">
+            <li><a href="agent-workshop.html#think"><span class="ri" aria-hidden="true">🧭</span><span>חושבים<small>התקנה, תיקייה ואפיון</small></span></a></li>
+            <li><a href="agent-workshop.html#build"><span class="ri" aria-hidden="true">🔧</span><span>בונים<small>בנייה, סקילים והנד-אוף</small></span></a></li>
+            <li><a href="agent-workshop.html#test"><span class="ri" aria-hidden="true">👥</span><span>בודקים<small>תיקון חלק-חלק</small></span></a></li>
+            <li><a href="agent-workshop.html#share"><span class="ri" aria-hidden="true">🚦</span><span>משתפים בזהירות<small>קונקטורים ומידע רגיש</small></span></a></li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </section>
 </main>
@@ -903,6 +926,7 @@ window.SITE_CONFIG = {
   var NAV = [
     { href: "index.html", label: "בית" },
     { href: "sessions.html", label: "מפגשי הקורס" },
+    { href: "practice.html", label: "תרגול" },
     { href: "prompt-book.html", label: "חושבים לפני שבונים" },
     { href: "build-prompts.html", label: "פרומפטים לבנייה" },
     { href: "guides.html", label: "מדריכים" },
