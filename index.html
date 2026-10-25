@@ -1466,7 +1466,7 @@ window.PROJECTS = [
       problem: p.problem || "",
       audience: p.audience || "",
       track: /הורא/.test(t) ? "הוראה" : (t ? "עבודה" : ""),
-      tool: /studio|סטודיו/i.test(tool) ? "AI Studio" : (tool ? "Canvas" : ""),
+      tool: /studio|סטודיו/i.test(tool) ? "AI Studio" : /canvas|קנבס/i.test(tool) ? "Canvas" : /claude\s*code|קלוד\s*קוד/i.test(tool) ? "Claude Code" : /codex|קודקס/i.test(tool) ? "Codex" : /base\s*44|בייס\s*44/i.test(tool) ? "Base44" : /lovable|לאבל|לאבבל/i.test(tool) ? "Lovable" : tool.trim(),
       link: safeUrl(p.link),
       image: imageUrl(p.image),
       changed: p.changed || "",

@@ -733,6 +733,10 @@ body.copybar-on .toast { bottom: 84px; }
           <button type="button" data-v="all" aria-pressed="true">כל הכלים</button>
           <button type="button" data-v="Canvas" aria-pressed="false">Canvas</button>
           <button type="button" data-v="AI Studio" aria-pressed="false">AI Studio</button>
+          <button type="button" data-v="Claude Code" aria-pressed="false" dir="ltr">Claude Code</button>
+          <button type="button" data-v="Codex" aria-pressed="false" dir="ltr">Codex</button>
+          <button type="button" data-v="Base44" aria-pressed="false" dir="ltr">Base44</button>
+          <button type="button" data-v="Lovable" aria-pressed="false" dir="ltr">Lovable</button>
         </div>
         <span class="muted small" id="gallery-count" aria-live="polite"></span>
       </div>
@@ -1371,7 +1375,7 @@ window.PROJECTS = [
       problem: p.problem || "",
       audience: p.audience || "",
       track: /הורא/.test(t) ? "הוראה" : (t ? "עבודה" : ""),
-      tool: /studio|סטודיו/i.test(tool) ? "AI Studio" : (tool ? "Canvas" : ""),
+      tool: /studio|סטודיו/i.test(tool) ? "AI Studio" : /canvas|קנבס/i.test(tool) ? "Canvas" : /claude\s*code|קלוד\s*קוד/i.test(tool) ? "Claude Code" : /codex|קודקס/i.test(tool) ? "Codex" : /base\s*44|בייס\s*44/i.test(tool) ? "Base44" : /lovable|לאבל|לאבבל/i.test(tool) ? "Lovable" : tool.trim(),
       link: safeUrl(p.link),
       image: imageUrl(p.image),
       changed: p.changed || "",
