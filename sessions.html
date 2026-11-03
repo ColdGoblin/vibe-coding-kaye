@@ -836,7 +836,7 @@ body.copybar-on .toast { bottom: 84px; }
       <article class="session" id="session-3" aria-labelledby="s3-title">
         <div>
           <p class="session-num">מפגש 3 · מעמיקים ובונים</p>
-          <h2 id="s3-title">סוכן על המחשב: Codex ו-Claude Code</h2>
+          <h2 id="s3-title">סוכן על המחשב: <bdi>Codex</bdi> <span style="white-space:nowrap">ו-<bdi>Claude Code</bdi></span></h2>
           <p style="font-size:1.1rem">אותה דרך עבודה, עם כלי שעובד על הקבצים שלכם. זו ההתחלה, ויהיה המשך.</p>
           <ul class="ticks">
             <li><strong>סוכן מול כלי מוגדר</strong> — הסוכן בונה לפי ההוראות שלכם, ולכן ההוראות קובעות את התוצאה.</li>
@@ -961,7 +961,7 @@ window.SITE_CONFIG = {
       '<span class="brand-text"><b>' + CFG.courseName + '</b><small>אתר מלווה לקורס</small></span></a>' +
       '<button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="פתיחת תפריט">' + ICONS.menu + "</button>" +
       '<nav class="main-nav" id="main-nav" aria-label="ניווט ראשי"><ul>' + items +
-      '<li class="nav-cta"><a class="btn btn-primary btn-sm" href="' + submitHref() + '"' + ext + ">" + ICONS.upload + "הגישו תוצר</a></li>" +
+      '<li class="nav-cta"><a class="btn btn-ghost btn-sm" href="' + submitHref() + '"' + ext + ">" + ICONS.upload + "הגישו תוצר</a></li>" +
       "</ul></nav></div>";
 
     var btn = el.querySelector(".nav-toggle");

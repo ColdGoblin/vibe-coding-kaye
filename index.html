@@ -279,7 +279,7 @@ ol.steps > li::before {
 @media (max-width: 860px) {
   .path { grid-template-columns: 1fr 1fr; gap: 12px; }
   .path-step, .path-step:first-child, .path-step:last-child { border-radius: var(--radius); border: 1px solid var(--line) !important; }
-  .path-step::after { display: none; }
+  .path-step:not(:last-child)::after { display: none; }
 }
 @media (max-width: 480px) { .path { grid-template-columns: 1fr; } }
 
@@ -301,6 +301,7 @@ ol.steps > li::before {
 .principle li.arrow { background: none; padding: 0; color: #ff9fbf; }
 .hero-panel .quote { margin: 20px 0 0; font-size: .95rem; color: #bcd6d3; border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; }
 @media (max-width: 900px) { .home-hero .wrap { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 560px) { .principle { flex-direction: column; align-items: flex-start; } .principle li.arrow { display: none; } }
 
 /* ---------- prompt box ---------- */
 .prompt {
@@ -713,7 +714,7 @@ body.copybar-on .toast { bottom: 84px; }
         <h1>קודם <span class="hl">חושבים</span><br>אחר כך בונים.</h1>
         <p class="lead">כל מה שצריך לקורס במקום אחד: פרומפטים לאפיון ולבנייה ב-Gemini Canvas וב-Google AI Studio, מדריכים, רשימות בדיקה, וגלריה של התוצרים שבניתם.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="prompt-book.html">מתחילים באפיון</a>
+          <a class="btn btn-primary" href="prompt-book.html">מתחילים: חושבים לפני שבונים</a>
           <a class="btn btn-outline-light" href="gallery.html">לגלריית התוצרים</a>
         </div>
       </div>
@@ -793,7 +794,7 @@ body.copybar-on .toast { bottom: 84px; }
         </article>
         <article class="card">
           <p class="session-num">מפגש 3 · מעמיקים ובונים</p>
-          <h3>סוכן על המחשב: Codex ו-Claude Code</h3>
+          <h3>סוכן על המחשב: <bdi>Codex</bdi> <span style="white-space:nowrap">ו-<bdi>Claude Code</bdi></span></h3>
           <p class="muted">אותה דרך עבודה בעומק גדול יותר: תיקיית עבודה, אפיון בשאלות, סקילים, הנד-אוף, קונקטורים וכללי זהירות. כל יחידה עם תרגול.</p>
           <a class="more" href="agent-workshop.html">למפגש עם התרגולים ←</a>
         </article>
@@ -1024,7 +1025,7 @@ window.PROJECTS = [
       '<span class="brand-text"><b>' + CFG.courseName + '</b><small>אתר מלווה לקורס</small></span></a>' +
       '<button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="פתיחת תפריט">' + ICONS.menu + "</button>" +
       '<nav class="main-nav" id="main-nav" aria-label="ניווט ראשי"><ul>' + items +
-      '<li class="nav-cta"><a class="btn btn-primary btn-sm" href="' + submitHref() + '"' + ext + ">" + ICONS.upload + "הגישו תוצר</a></li>" +
+      '<li class="nav-cta"><a class="btn btn-ghost btn-sm" href="' + submitHref() + '"' + ext + ">" + ICONS.upload + "הגישו תוצר</a></li>" +
       "</ul></nav></div>";
 
     var btn = el.querySelector(".nav-toggle");
